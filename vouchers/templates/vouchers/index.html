@@ -1,0 +1,22 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'vouchers/style.css' %}">
+  
+
+<h1>Welcome to Voucher app</h1>
+<div>
+<form action="{% url 'vouchers:index' %}" method="post">
+{% csrf_token %}
+<input type="text" name="voucher_code" id="voucher_code" placeholder="Enter your voucher code">
+<input type="submit" value="Redeem">
+</form>
+{% if error_message %}
+<p class='error'><strong>{{ error_message }}</strong></p>
+{% else %}
+{% if message %}
+<p>
+{{ message }}
+</p>
+{% endif %}
+{% endif %}
+</div>
